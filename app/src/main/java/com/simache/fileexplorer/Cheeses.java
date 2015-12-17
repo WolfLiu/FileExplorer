@@ -23,18 +23,22 @@ public class Cheeses {
     private static final Random RANDOM = new Random();
 
     public static int getRandomCheeseDrawable() {
-        switch (RANDOM.nextInt(5)) {
+        switch (RANDOM.nextInt(7)) {
             default:
             case 0:
-                return R.mipmap.cheese_1;
+                return R.mipmap.ic_nav_all;
             case 1:
-                return R.mipmap.cheese_2;
+                return R.mipmap.ic_nav_doc;
             case 2:
-                return R.mipmap.cheese_3;
+                return R.mipmap.ic_nav_music;
             case 3:
-                return R.mipmap.cheese_4;
+                return R.mipmap.ic_nav_own;
             case 4:
-                return R.mipmap.cheese_5;
+                return R.mipmap.ic_nav_picture;
+            case 5:
+                return R.mipmap.ic_nav_video;
+            case 6:
+                return R.mipmap.ic_nav_zip;
         }
     }
 

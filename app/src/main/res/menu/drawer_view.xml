@@ -34,6 +34,10 @@
             android:icon="@mipmap/ic_headset"
             android:title="@string/nav_music" />
         <item
+            android:id="@+id/nav_picture"
+            android:icon="@mipmap/ic_headset"
+            android:title="@string/nav_picture" />
+        <item
             android:id="@+id/nav_doc"
             android:icon="@mipmap/ic_forum"
             android:title="@string/nav_doc" />

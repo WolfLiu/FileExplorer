@@ -6,10 +6,11 @@
     <string name="menu_settings">设置</string>
 
     <string name="nav_header">用户名</string>
-    <string name="nav_own">自定义文件夹</string>
+    <string name="nav_own">收藏夹</string>
     <string name="nav_all">所有文件</string>
     <string name="nav_video">视频</string>
     <string name="nav_music">音乐</string>
+    <string name="nav_picture">图片</string>
     <string name="nav_doc">文档</string>
     <string name="nav_zip">压缩包</string>
     <string name="nav_apk">安装包</string>

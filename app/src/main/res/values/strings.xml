@@ -14,6 +14,7 @@
     <string name="nav_all">All File</string>
     <string name="nav_video">Video</string>
     <string name="nav_music">Music</string>
+    <string name="nav_picture">Picture</string>
     <string name="nav_doc">Documents</string>
     <string name="nav_zip">Zip Package</string>
     <string name="nav_apk">Apk Files</string>
