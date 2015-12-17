@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">文件浏览器</string>
+    <string name="action_settings">设置</string>
+      <string name="cheese_ipsum">不要一味地羡慕人家的绝活与绝招，通过恒久的努力，你也完全可以拥有。因为，把一个简单的动作练到出神入化，就是绝招；把一件平凡的小事做到炉火纯青，就是绝活。提醒自己，记住自己的提醒，上进的你，快乐的你，健康的你，善良的你，一定会有一个灿烂的人生。</string>
+    <string name="checkin">Checkin</string>
+    <string name="menu_settings">设置</string>
+
+    <string name="nav_header">用户名</string>
+    <string name="nav_own">自定义文件夹</string>
+    <string name="nav_all">所有文件</string>
+    <string name="nav_video">视频</string>
+    <string name="nav_music">音乐</string>
+    <string name="nav_doc">文档</string>
+    <string name="nav_zip">压缩包</string>
+    <string name="nav_apk">安装包</string>
+
+    <string name="sort_by_name">按名称排序</string>
+    <string name="sort_by_size">按大小排序</string>
+    <string name="sort_by_time">按时间排序</string>
+
+    <array name="list_items">
+        <item>文件1</item>
+        <item>文件2</item>
+        <item>文件3</item>
+        <item>文件4</item>
+        <item>文件5</item>
+        <item>文件6</item>
+        <item>文件7</item>
+        <item>文件8</item>
+        <item>文件9</item>
+        <item>文件10</item>
+        <item>文件11</item>
+        <item>文件12</item>
+        <item>文件13</item>
+        <item>文件14</item>
+        <item>文件15</item>
+    </array>
+</resources>

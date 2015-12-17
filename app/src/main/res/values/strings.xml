@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">FileExplorer</string>
+    <string name="action_settings">Settings</string>
+    <string name="cheese_ipsum">Jarlsberg lancashire edam. Dolcelatte hard cheese brie st. agur blue
+    cheese caerphilly bavarian bergkase cheese and biscuits mascarpone. Cheeseburger swiss bavarian
+    bergkase cream cheese fromage frais cheesy feet port-salut airedale. St. agur blue cheese rubber
+    cheese caerphilly cheddar cheesecake cream cheese manchego lancashire. Roquefort squirty cheese
+    the big cheese.</string>
+    <string name="checkin">Checkin</string>
+    <string name="menu_settings">Settings</string>
+
+    <string name="nav_header">Username</string>
+    <string name="nav_own">Own Directory</string>
+    <string name="nav_all">All File</string>
+    <string name="nav_video">Video</string>
+    <string name="nav_music">Music</string>
+    <string name="nav_doc">Documents</string>
+    <string name="nav_zip">Zip Package</string>
+    <string name="nav_apk">Apk Files</string>
+
+    <string name="sort_by_name">By Time</string>
+    <string name="sort_by_size">By Name</string>
+    <string name="sort_by_time">By Name</string>
+
+    <array name="list_items">
+        <item>File1</item>
+        <item>File2</item>
+        <item>File3</item>
+        <item>File4</item>
+        <item>File5</item>
+        <item>File6</item>
+        <item>File7</item>
+        <item>File8</item>
+        <item>File9</item>
+        <item>File10</item>
+        <item>File11</item>
+        <item>File12</item>
+        <item>File13</item>
+        <item>File14</item>
+        <item>File15</item>
+    </array>
+</resources>
