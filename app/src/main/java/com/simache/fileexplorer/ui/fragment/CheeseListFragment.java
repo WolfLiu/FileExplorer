@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.simache.fileexplorer;
+package com.simache.fileexplorer.ui.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,6 +31,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.simache.fileexplorer.Cheeses;
+import com.simache.fileexplorer.R;
+import com.simache.fileexplorer.ui.activity.CheeseDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;

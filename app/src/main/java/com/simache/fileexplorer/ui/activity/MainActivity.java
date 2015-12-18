@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.simache.fileexplorer;
+package com.simache.fileexplorer.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -33,6 +33,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.simache.fileexplorer.R;
+import com.simache.fileexplorer.ui.fragment.CheeseListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         final ActionBar ab = getSupportActionBar();
         ab.setHomeAsUpIndicator(R.mipmap.ic_menu);
         ab.setDisplayHomeAsUpEnabled(true);
+        ab.setHomeButtonEnabled(true);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
