@@ -34,13 +34,14 @@ import com.bumptech.glide.Glide;
 import com.simache.fileexplorer.Cheeses;
 import com.simache.fileexplorer.R;
 import com.simache.fileexplorer.ui.activity.CheeseDetailActivity;
+import com.simache.fileexplorer.utils.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class CheeseListFragment extends Fragment {
-
+    private final String TAG = "CheeseListFragment";
 
     public static String[] sCheeseStrings;
 
@@ -51,6 +52,7 @@ public class CheeseListFragment extends Fragment {
         RecyclerView rv = (RecyclerView) inflater.inflate(
                 R.layout.fragment_cheese_list, container, false);
         setupRecyclerView(rv);
+        LogUtil.e(TAG, "onCreateView");
         return rv;
     }
 

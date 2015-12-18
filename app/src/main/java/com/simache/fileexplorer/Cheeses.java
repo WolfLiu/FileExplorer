@@ -42,6 +42,22 @@ public class Cheeses {
         }
     }
 
+    public static int getRandomCheeseDrawableBig() {
+        switch (RANDOM.nextInt(5)) {
+            default:
+            case 0:
+                return R.mipmap.cheese_1;
+            case 1:
+                return R.mipmap.cheese_2;
+            case 2:
+                return R.mipmap.cheese_3;
+            case 3:
+                return R.mipmap.cheese_4;
+            case 4:
+                return R.mipmap.cheese_5;
+        }
+    }
+
 /*    public static final String[] sCheeseStrings = {
             "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi",
             "Acorn", "Adelost", "Affidelice au Chablis", "Afuega'l Pitu", "Airag", "Airedale",
