@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">文件浏览器</string>
-    <string name="action_settings">设置</string>
       <string name="cheese_ipsum">不要一味地羡慕人家的绝活与绝招，通过恒久的努力，你也完全可以拥有。因为，把一个简单的动作练到出神入化，就是绝招；把一件平凡的小事做到炉火纯青，就是绝活。提醒自己，记住自己的提醒，上进的你，快乐的你，健康的你，善良的你，一定会有一个灿烂的人生。</string>
-    <string name="checkin">Checkin</string>
     <string name="menu_settings">设置</string>
 
     <string name="nav_header">用户名</string>
