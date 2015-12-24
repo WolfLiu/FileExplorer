@@ -16,32 +16,31 @@
 
 package com.simache.fileexplorer.ui.fragment;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.simache.fileexplorer.Cheeses;
 import com.simache.fileexplorer.R;
-import com.simache.fileexplorer.ui.activity.CheeseDetailActivity;
-import com.simache.fileexplorer.utils.LogUtil;
+import com.simache.fileexplorer.ui.adapter.FileListAdapter;
+import com.simache.fileexplorer.ui.adapter.FileListAdapter.OnListItemClickListener;
+import com.simache.fileexplorer.utils.FileTypesUtils;
+import com.socks.library.KLog;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class CheeseListFragment extends Fragment {
+public class CheeseListFragment extends Fragment implements OnListItemClickListener{
     private final String TAG = "CheeseListFragment";
+    private StringBuilder mPath = new StringBuilder("/sdcard/");
+    private FileListAdapter mFileListAdapter;
 
     public static String[] sCheeseStrings;
 
@@ -52,14 +51,18 @@ public class CheeseListFragment extends Fragment {
         RecyclerView rv = (RecyclerView) inflater.inflate(
                 R.layout.fragment_cheese_list, container, false);
         setupRecyclerView(rv);
-        LogUtil.e(TAG, "onCreateView");
+        KLog.i("onCreateView");
         return rv;
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(),
-                getRandomSublist(sCheeseStrings, 30)));
+        /*recyclerView.setAdapter(new FileListAdapter(getActivity(),
+                getRandomSublist(sCheeseStrings, 30)));*/
+        mFileListAdapter = new FileListAdapter(getActivity(),
+                FileTypesUtils.getFilesList("/sdcard/"));
+
+        recyclerView.setAdapter(mFileListAdapter);
     }
 
     private List<String> getRandomSublist(String[] array, int amount) {
@@ -71,76 +74,41 @@ public class CheeseListFragment extends Fragment {
         return list;
     }
 
-    public static class SimpleStringRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleStringRecyclerViewAdapter.ViewHolder> {
+    public List<String> getFilesList(String filePath) {
+        List<String> filesList = new ArrayList<>();
+        String[] list = null;
+        File file = new File(filePath);
+        if (file.isDirectory()) {
+            list = file.list();
+        }
 
-        private final TypedValue mTypedValue = new TypedValue();
-        private int mBackground;
-        private List<String> mValues;
-
-        public static class ViewHolder extends RecyclerView.ViewHolder {
-            public String mBoundString;
-
-            public final View mView;
-            public final ImageView mImageView;
-            public final TextView mTextView;
-
-            public ViewHolder(View view) {
-                super(view);
-                mView = view;
-                mImageView = (ImageView) view.findViewById(R.id.avatar);
-                mTextView = (TextView) view.findViewById(android.R.id.text1);
+        if (null != list) {
+            for (String s : list) {
+                filesList.add(s);
             }
-
-            @Override
-            public String toString() {
-                return super.toString() + " '" + mTextView.getText();
-            }
+            filesList = Arrays.asList(list);
         }
 
-        public String getValueAt(int position) {
-            return mValues.get(position);
+        return filesList;
+    }
+
+    @Override
+    public void onClicked(String fileName) {
+        KLog.e("file name = " + fileName);
+
+        mPath.append(fileName);
+        mPath.append("/");
+        String childFilePath = mPath.toString();
+        KLog.e("child file path : " + childFilePath);
+
+        File file = new File(childFilePath);
+        if (file.isDirectory()) {
+            KLog.e("is directory");
+            mFileListAdapter.setFileList(FileTypesUtils.getFilesList(childFilePath));
+            mFileListAdapter.notifyDataSetChanged();
         }
-
-        public SimpleStringRecyclerViewAdapter(Context context, List<String> items) {
-            context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
-            mBackground = mTypedValue.resourceId;
-            mValues = items;
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.list_item, parent, false);
-            view.setBackgroundResource(mBackground);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mBoundString = mValues.get(position);
-            holder.mTextView.setText(mValues.get(position));
-
-            holder.mView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, CheeseDetailActivity.class);
-                    intent.putExtra(CheeseDetailActivity.EXTRA_NAME, holder.mBoundString);
-
-                    context.startActivity(intent);
-                }
-            });
-
-            Glide.with(holder.mImageView.getContext())
-                    .load(Cheeses.getRandomCheeseDrawable())
-                    .fitCenter()
-                    .into(holder.mImageView);
-        }
-
-        @Override
-        public int getItemCount() {
-            return mValues.size();
+        else {
+            KLog.e("不是文件夹");
         }
     }
 }
