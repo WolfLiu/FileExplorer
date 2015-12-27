@@ -29,14 +29,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.simache.fileexplorer.R;
-import com.simache.fileexplorer.ui.fragment.CheeseListFragment;
+import com.simache.fileexplorer.ui.fragment.BaseFragment;
+import com.simache.fileexplorer.ui.fragment.FileListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +46,7 @@ import java.util.List;
 /**
  * TODO
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle drawerToggle;
@@ -52,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -123,9 +127,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new CheeseListFragment(), getString(R.string.sort_by_name));
-        adapter.addFragment(new CheeseListFragment(), getString(R.string.sort_by_size));
-        adapter.addFragment(new CheeseListFragment(), getString(R.string.sort_by_time));
+        adapter.addFragment(new FileListFragment(), getString(R.string.sort_by_name));
+        adapter.addFragment(new FileListFragment(), getString(R.string.sort_by_size));
+        adapter.addFragment(new FileListFragment(), getString(R.string.sort_by_time));
         viewPager.setAdapter(adapter);
     }
 
@@ -139,6 +143,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return BaseFragment.onKeyDown(keyCode, event);
     }
 
     static class Adapter extends FragmentPagerAdapter {

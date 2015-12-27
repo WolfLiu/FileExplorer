@@ -37,8 +37,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class CheeseListFragment extends Fragment implements OnListItemClickListener{
-    private final String TAG = "CheeseListFragment";
+public class FileListFragment extends Fragment implements OnListItemClickListener{
+    private final String TAG = "FileListFragment";
     private StringBuilder mPath = new StringBuilder("/sdcard/");
     private FileListAdapter mFileListAdapter;
 
@@ -63,6 +63,7 @@ public class CheeseListFragment extends Fragment implements OnListItemClickListe
                 FileTypesUtils.getFilesList("/sdcard/"));
 
         recyclerView.setAdapter(mFileListAdapter);
+        mFileListAdapter.setOnListItemClickListener(this);
     }
 
     private List<String> getRandomSublist(String[] array, int amount) {
@@ -111,4 +112,6 @@ public class CheeseListFragment extends Fragment implements OnListItemClickListe
             KLog.e("不是文件夹");
         }
     }
+
+
 }
